@@ -1,14 +1,27 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <el-container>
+      <el-menu class="el-menu-demo" mode="horizontal" :router="true">
+        <el-menu-item index="/">Home</el-menu-item>
+        <el-menu-item index="/list">List</el-menu-item>
+        <el-menu-item index="/about">About</el-menu-item>
+      </el-menu>
+      <el-main>
+        <router-view/>
+      </el-main>
+      <el-footer>Footer</el-footer>
+    </el-container>
   </div>
 </template>
 
 <style lang="scss">
+body {
+  margin: 0;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

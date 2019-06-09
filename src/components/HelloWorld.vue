@@ -32,9 +32,13 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import ProductItem from '@/components/ProductItem.vue';
 
 export default Vue.extend({
   name: 'HelloWorld',
+  components: {
+    ProductItem,
+  },
   props: {
     msg: String,
   },
