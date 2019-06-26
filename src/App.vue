@@ -4,7 +4,6 @@
       <el-menu class="el-menu-demo" mode="horizontal" :router="true">
         <el-menu-item index="/">Home</el-menu-item>
         <el-menu-item index="/products">Products</el-menu-item>
-        <el-menu-item index="/about">About</el-menu-item>
       </el-menu>
       <el-main>
         <router-view/>
@@ -28,14 +27,5 @@ img {
   text-align: center;
   color: #2c3e50;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+
 </style>

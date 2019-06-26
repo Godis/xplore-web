@@ -26,7 +26,7 @@ export default Vue.extend({
     };
   },
   mounted() {
-    axios.get('http://godis.org.uk/xplore/products').then(res => {
+    axios.get('http://godis.org.uk/xplore/products').then((res) => {
       this.products = res.data;
     });
   },
