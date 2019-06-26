@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <el-container>
-      <el-menu class="el-menu-demo" mode="horizontal" :router="true">
-        <el-menu-item index="/">Home</el-menu-item>
-        <el-menu-item index="/products">Products</el-menu-item>
-      </el-menu>
+      <el-header>
+          <el-menu class="el-menu-demo" mode="horizontal" width="100%" :router="true">
+            <el-menu-item index="/">Home</el-menu-item>
+            <el-menu-item index="/products">Products</el-menu-item>
+          </el-menu>
+      </el-header>
       <el-main>
         <router-view/>
       </el-main>
