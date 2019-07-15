@@ -1,0 +1,47 @@
+<template>
+    <div>
+        <el-row :gutter="20">
+          <el-col :span="20" :offset="4">
+            <el-table :data="products" stripe border style="width: 100%">
+                <el-table-column prop="category" label="Category"></el-table-column>
+                <el-table-column prop="brand" label="Brand" width="180"></el-table-column>
+                <el-table-column prop="colour" label="Colour"></el-table-column>
+                <el-table-column prop="sizing" label="Size"></el-table-column>
+            </el-table>
+          </el-col>
+        </el-row>
+        <el-row>
+            <el-button v-on:click="create()" type="primary" plain>Create a Product</el-button>
+        </el-row>
+    </div>
+</template>
+
+<script lang="ts">
+import Vue from 'vue';
+import axios from 'axios';
+
+export default Vue.extend({
+  name: 'ProductView',
+  data() {
+    return {
+      products: [],
+    };
+  },
+  methods: {
+    create: (event: any) => {
+        location.href = '/products/create';
+    },
+  },
+  mounted() {
+    axios.get('http://godis.org.uk/xplore/products').then((res) => {
+      const products = res.data.map(
+        (product: any) => {
+            product.sizing = product.size + ' (' + product.region + ')';
+            return product;
+        },
+      );
+      this.products = products;
+    });
+  },
+});
+</script>

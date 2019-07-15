@@ -4,7 +4,7 @@
       <el-header>
           <el-menu class="el-menu-demo" mode="horizontal" width="100%" :router="true">
             <el-menu-item index="/">Home</el-menu-item>
-            <el-menu-item index="/products">Products</el-menu-item>
+            <el-menu-item index="/products">View Products</el-menu-item>
           </el-menu>
       </el-header>
       <el-main>
