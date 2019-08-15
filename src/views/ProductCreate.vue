@@ -6,7 +6,10 @@
                 <div class="el-form-item">
                     <label>Category</label>
                     <select name="category" v-model="product.category">
-                        <option v-for="category in categories">{{ category }}</option>
+                        <option
+                            v-for="category in categories"
+                            :key="category"
+                        >{{ category }}</option>
                     </select>
                 </div>
                 <div class="el-form-item">
@@ -17,13 +20,19 @@
                     <label>Colour</label>
                     <input v-model="product.colour" class="input" type="text" list="colours">
                     <datalist id="colours">
-                        <option v-for="colour in colours">{{ colour }}</option>
+                        <option
+                            v-for="colour in colours"
+                            :key="colour"
+                        >{{ colour }}</option>
                     </datalist>
                 </div>
                 <div class="el-form-item">
                     <label>Region</label>
                     <select name="region" v-model="product.region">
-                        <option v-for="region in regions">{{ region }}</option>
+                        <option
+                            v-for="region in regions"
+                            :key="region"
+                        >{{ region }}</option>
                     </select>
                 </div>
                 <div class="el-form-item">
