@@ -82,7 +82,7 @@ export default Vue.extend({
 
         alert(JSON.stringify(product));
 
-        axios.post('http://godis.org.uk/xplore/products', product)
+        axios.post('http://godis.org.uk/api/products', product)
             .then((_) => location.href = '/products');
     },
   },

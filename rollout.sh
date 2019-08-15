@@ -17,4 +17,4 @@ docker push $image
 
 #Deploy
 ssh -i xplore.pem ubuntu@godis.org.uk "docker pull $image"
-ssh -i xplore.pem ubuntu@godis.org.uk "docker service update --image $image xplore"
+ssh -i xplore.pem ubuntu@godis.org.uk "docker service update --image $image xplore-web"

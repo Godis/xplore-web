@@ -11,7 +11,7 @@
           </el-col>
         </el-row>
         <el-row>
-            <el-button v-on:click="create()" type="primary" plain>Create a Product</el-button>
+            <el-button v-on:click="create" type="primary" plain>Create a Product</el-button>
         </el-row>
     </div>
 </template>
@@ -28,12 +28,12 @@ export default Vue.extend({
     };
   },
   methods: {
-    create: (event: any) => {
-        location.href = '/products/create';
+    create() {
+        this.$router.push('/product/create');
     },
   },
   mounted() {
-    axios.get('http://godis.org.uk/xplore/products').then((res) => {
+    axios.get('http://godis.org.uk/api/products').then((res) => {
       const products = res.data.map(
         (product: any) => {
             product.sizing = product.size + ' (' + product.region + ')';
