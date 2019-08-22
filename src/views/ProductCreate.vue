@@ -65,6 +65,8 @@
 import Vue from 'vue';
 import axios from 'axios';
 
+import config from '../config';
+
 export default Vue.extend({
   name: 'ProductCreate',
   data() {
@@ -79,7 +81,7 @@ export default Vue.extend({
             brand: '',
             colour: '',
             region: '',
-            size: 4,
+            size: '4',
             description: {},
         },
     };
@@ -91,7 +93,7 @@ export default Vue.extend({
 
         alert(JSON.stringify(product));
 
-        axios.post('http://godis.org.uk/api/products', product)
+        axios.post(`${config.apiBaseUrl}/products`, product)
             .then((_) => location.href = '/products');
     },
   },
