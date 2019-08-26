@@ -2,7 +2,7 @@
     <div>
         <el-row :gutter="20">
           <el-col :span="23" :offset="1">
-            <form class="el-form" v-on:submit.prevent="submit(product)">
+            <ValidationObserver tag="form" v-slot="{ untouched, invalid, errors }" @submit.prevent="submit">
                 <div class="el-form-item">
                     <label>Category</label>
                     <select name="category" v-model="product.category">
@@ -14,7 +14,9 @@
                 </div>
                 <div class="el-form-item">
                     <label>Brand</label>
-                    <input v-model="product.brand" class="input" type="text" placeholder="Enter a brand">
+                    <ValidationProvider vid="brand" name="brand" rules="required">
+                        <input v-model="product.brand" class="input" type="text" placeholder="Enter a brand">
+                    </ValidationProvider>
                 </div>
                 <div class="el-form-item">
                     <label>Colour</label>
@@ -28,7 +30,7 @@
                 </div>
                 <div class="el-form-item">
                     <label>Region</label>
-                    <select name="region" v-model="product.region">
+                    <select name="region" rules="required" v-model="product.region">
                         <option
                             v-for="region in regions"
                             :key="region"
@@ -53,9 +55,12 @@
                     <input v-model="product.description.design" class="input" type="text">
                 </div>
                 <div class="el-form-item">
-                    <button class="button is-primary">Submit</button>
+                    <button class="button is-primary" :disabled="untouched || invalid">Submit</button>
                 </div>
-            </form>
+                <div class="el-form-item">
+                    <span id="error">{{ ...Object.values(errors).flat() }}</span>
+                </div>
+            </ValidationObserver>
           </el-col>
         </el-row>
     </div>
@@ -64,8 +69,14 @@
 <script lang="ts">
 import Vue from 'vue';
 import axios from 'axios';
-
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
+import { required } from 'vee-validate/dist/rules';
 import config from '../config';
+
+extend('required', required);
+
+Vue.component('ValidationObserver', ValidationObserver);
+Vue.component('ValidationProvider', ValidationProvider);
 
 export default Vue.extend({
   name: 'ProductCreate',
@@ -87,7 +98,8 @@ export default Vue.extend({
     };
   },
   methods: {
-    submit: (product: any) => {
+    submit() {
+        const product = this.product;
 
         if (product.category !== 'Shoes') { product.description = {}; }
 
